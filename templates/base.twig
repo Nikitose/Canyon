@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--Font-awesome-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<!--FONTS-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Chango&family=Concert+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Chango&family=Concert+One&family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+	<!--CSS-->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/{{ style }}.css">
+	<!--ICONE-->
+    <link rel="icon" type="image/x-icon" href="images/icone.png">
+	<!--TITRE-->
+	<title>Canyon</title>
+</head>
+<body>
+
+<!--HEADER-->
+<header role="banner">
+	<!--Logo-Canyon-->
+	<div class="section_header_un">
+		<button><i class="fa-solid fa-bars"></i></button>
+		<h1><a href="index.php"><img class="logo-nav" src="images/logo.png"></a></h1>
+	</div>
+	<!--Nav-Principal-->
+	{% block nav_1 %}
+		{% block nav_1_1 %}
+		<div class="section_header_deux">
+			<nav role="navigation" class="nav_1">
+				<ul>
+				    {% set nombre_de_nouveaux = nouveau_velo|length %}
+				    {% set nombre_de_promotions = promotion_velo|length %}
+					<li class="bold"><a href="promotion_velo_vignettes.php">Promotions({{nombre_de_promotions}})</a></li>
+					<li class="bold"><a href="nouveau_velo_vignettes.php">Nouveau({{nombre_de_nouveaux}})</a></li>
+					{% for categories in affiche_categories %}
+						<li><a href="sous-categories.php?id={{ categories.id_categorie }}">{{ categories.nom_categorie }}</a></li>
+					{% endfor %}
+					<li><a href="filtres.php">filtrer</a></li>
+					<li><a href="panier.php">Panier(<span class="bold">{{ affiche_nombre_velo_panier[0]['affiche_nombre_velo_panier'] }}</span>)</a></li>
+					<li><a href="a-propos.php">à-propos</a></li>
+					<li><a href="ajout_velos.php">ajout-velo(admin)</a></li>
+				</ul>
+			</nav>
+		</div>
+		{% endblock %}
+		
+		<!--Nav-Secondaire-->
+		{% block nav_2 %}
+		{% endblock %}
+
+		<div class="section_header_deux-2 hidden">
+			<nav role="navigation" class="nav_1-2">
+				<ul>
+				    {% set nombre_de_nouveaux = nouveau_velo|length %}
+				    {% set nombre_de_promotions = promotion_velo|length %}
+					<li class="bold"><a href="promotion_velo_vignettes.php">Promotions({{nombre_de_promotions}})</a></li>
+					<li class="bold"><a href="nouveau_velo_vignettes.php">Nouveau({{nombre_de_nouveaux}})</a></li>
+					{% for categories in affiche_categories %}
+						<li><a href="sous-categories.php?id={{ categories.id_categorie }}">{{ categories.nom_categorie }}</a></li>
+					{% endfor %}
+					<li><a href="filtres.php">filtrer</a></li>
+					<li><a href="panier.php">Panier(<span class="bold">{{ affiche_nombre_velo_panier[0]['affiche_nombre_velo_panier'] }}</span>)</a></li>
+					<li><a href="ajout_velos.php">ajout-velo(admin)</a></li>
+					<li><a href="a-propos.php">a-propos</a></li>
+				</ul>
+			</nav>
+		</div>
+	{% endblock %}
+</header>
+
+<!--MAIN-->
+<main role="main">
+	{% block main %}
+
+	{% endblock %}
+</main>
+
+<!--FOOTER-->
+<footer role="contentinfo">
+    <section class="grid_footer">
+		<!--Toutes les categories-->
+        <div class="footer_column">
+            <h5>Catégories</h5>
+            <ul>
+                {% for categories in affiche_categories %}
+                    <li class="texte_surligner"><a href="sous-categories.php?id={{ categories.id_categorie }}">{{ categories.nom_categorie }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+		<!--Toutes les sous categories-->
+        <div class="footer_column">
+            <h5>Sous catégories</h5>
+            <ul>
+                {% for sous_categories in affiche_sous_categories_all %}
+                    <li class="texte_surligner"><a href="affiche_velos_vignettes.php?id={{ sous_categories.id_sous_categorie }}">{{ sous_categories.nom_sous_categorie }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+		<!--Tout les nouveaux vélos-->
+		<div class="footer_column">
+			<h5 class="texte_surligner"><a href="nouveau_velo_vignettes.php">Nouveaux vélos</a></h5>
+			<ul>
+				{% for nouveau in nouveau_velo %}
+					<li class="texte_surligner"><a href="affiche_details_velos.php?id={{ nouveau.id_velo }}">{{ nouveau.nom_velo }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		<!--Tous les vélos en promotion-->
+		<div class="footer_column">
+			<h5 class="texte_surligner"><a href="promotion_velo_vignettes.php">Vélos en promotions</a></h5>
+			<ul> 
+				{% for promotion in promotion_velo %}
+					<li class="texte_surligner"><a href="affiche_details_velos.php?id={{ promotion.id_velo }}">{{ promotion.nom_velo }}</a></li>
+				{% endfor %}
+			</ul> 
+		</div>
+    </section>
+</footer>
+
+</body>
+</html>
+
+<script src="js/script.js"></script>

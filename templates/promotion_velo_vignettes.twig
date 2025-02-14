@@ -1,0 +1,51 @@
+{% extends 'sous-categories.twig' %}
+
+{% block nav_2 %}
+
+{% endblock %}
+
+{% block main %}
+    <!--Titre-->
+    <h3>Les vélos en promotion</h3>
+    <!--BOX articles-->
+    <div class="articles_grid wrapper">
+    {% for promotion in promotion_velo %}
+        <!--UN articles-->
+        <article class="article_velo">
+            <!--BOX img-->
+            <div class="image_article">
+                <div class="box-info">
+                    <!--PROMO oui/non-->
+                    {% if promotion.prix_de_base %} 
+                        {% set economie = promotion.prix_de_base - promotion.prix %}
+                        {% set pourcentage = (economie / promotion.prix_de_base * 100) | round %}
+                        <p class="article_velo_pourcentage">-{{ pourcentage }}%</p>
+                    {% endif %}
+                    <!--NEW oui/non-->
+                    {% if promotion.nouveau == 'oui' %}
+                        <p class="info_velo_nouveau">nouveau</p>
+                    {% endif %}
+                </div>
+                <!--img-->
+                <a href="affiche_details_velos.php?id={{ promotion.id_velo }}">
+                    <img src="{{ promotion.img_couleur_1 }}" alt="image du velo {{ promotion.nom_velo }}">
+                </a>
+            </div>
+            <!--BOX texte-->
+            <div class="texte_article">
+                <!--nom vélo-->
+                <h4>{{ promotion.nom_velo }}</h4>
+                <!--prix-->
+                <p class="prix">
+                    <span class="bold">{{ promotion.prix }} €</span>
+                    {% if promotion.prix_de_base %} 
+                    <span class="couleur_gris"><span class="texte_barrer">{{ promotion.prix_de_base }} €</span> économisez {{ promotion.prix_de_base - promotion.prix }} €</span>
+                    {% endif %}
+                </p>
+                <!--par mois-->
+                <p class="texte_surligner par_mois">ou {{ promotion.prix_par_mois }} € par mois</p>
+            </div>
+        </article>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'sous-categories.twig' %}
+
+{% block nav_1 %}
+
+    <nav class="box_retour_velo">
+        <a class="texte_retour_sous_categorie texte_surligner" href="affiche_velos_vignettes.php?id={{ affiche_detail_velo.id_sous_categorie }}"><i class="fa-solid fa-angles-left"></i> Retour àaaaaaaaaaaaaa {{ affiche_detail_velo.nom_sous_categorie }}</a>
+    </nav>
+
+{% endblock %}
+
+{% block nav_2 %}
+
+{% endblock %}
+
+{% block main %}
+    
+    <!--Envoie_commentaire_et_note-->
+    <form method="post" action="reception.php" class="poster_commentaire">
+        <input type="hidden" name="id_velo" value="{{ affiche_detail_velo.id_velo }}">
+        <input type="text" name="text" placeholder="Votre commentaire">
+        <input type="number" name="note" min="0" max="5" placeholder="Votre note (sur 5)">
+        <input type="submit" value="Poster le commentaire">
+    </form>
+
+{% endblock %}

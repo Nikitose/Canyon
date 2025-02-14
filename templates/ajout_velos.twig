@@ -1,0 +1,75 @@
+{% extends 'sous-categories.twig' %}
+
+{% block nav_2 %}
+
+{% endblock %}
+
+{% block main %}
+    <h2>Ajouter un vélo à la Base de donnée</h2>
+    <form action="envoye_velos.php" method="POST" class="from_ajout_velo">
+        <label for="nom_velo">Nom du vélo:</label>
+        <input type="text" id="nom_velo" name="nom_velo" required>
+
+        <!--selection- Sous-catégorie-->
+        <label for="id_sous_categorie">Sous-catégorie:</label>
+        <select id="id_sous_categorie" name="id_sous_categorie" required>
+            {% for sous_categories in affiche_sous_categories_all %}
+                <option value="{{ sous_categories.id_sous_categorie }}">{{ sous_categories.nom_sous_categorie }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="nouveau">Nouveau:</label>
+        <select id="nouveau" name="nouveau" required>
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+        </select>
+
+        <label for="VAE">VAE:</label>
+        <select id="VAE" name="VAE" required>
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+        </select>    
+
+        <label for="img_couleur_1">URL de l'image couleur-1 :</label>
+        <input type="text" id="img_couleur_1" name="img_couleur_1" required>
+
+        <label for="img_couleur_2">URL de l'image couleur-2 :</label>
+        <input type="text" id="img_couleur_2" name="img_couleur_2">
+
+        <label for="texte_couleur_1">URL du texte couleur-1 :</label>
+        <input type="text" id="texte_couleur_1" name="texte_couleur_1">
+
+        <label for="texte_couleur_2">URL du texte couleur-2 :</label>
+        <input type="text" id="texte_couleur_2" name="texte_couleur_2">
+
+        <label for="taille">Tailles disponibles :</label>
+        <input id="taille" name="taille" required></input>
+
+        <label for="prix">Prix :</label>
+        <input type="text" id="prix" name="prix" required>
+
+        <label for="prix_de_base">Prix de base :</label>
+        <input type="text" id="prix_de_base" name="prix_de_base">
+
+        <label for="prix_par_mois">Prix par mois :</label>
+        <input type="text" id="prix_par_mois" name="prix_par_mois" required>
+
+        <label for="type_debatement">Type débattement :</label>
+        <input type="text" id="type_debatement" name="type_debatement" required>
+
+        <label for="debatement">Débattement :</label>
+        <input type="text" id="debatement" name="debatement" required>
+
+        <label for="poids">Poids :</label>
+        <input type="text" id="poids" name="poids" required>
+
+        <label for="Matériau">Matériau :</label>
+        <input type="text" id="Matériau" name="Matériau" required>
+
+        <label for="description">Description :</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <button class="envoye-velo" type="submit">Ajouter</button>
+    </form>
+{% endblock %}
+

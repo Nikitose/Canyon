@@ -1,0 +1,60 @@
+{% extends 'base.twig' %}
+
+{% block nav_2 %}
+
+{% endblock %}
+
+{% block main %}
+    <!--BANNIERE-->
+    <section class="banniere">
+        <div class="centre">
+            <h2>La puissance sans effort</h2>
+            <div class="box-boutton-vers-nouveaux-promotions">
+                <a href="nouveau_velo_vignettes.php">Découvrir les nouveaux vélos</a>
+                <a href="promotion_velo_vignettes.php">Découvrir les vélos en promotions</a>
+            </div>
+        </div>
+    </section>
+    <!--Le bijou de l'année-->
+    <section class="accueil_le_nouveau_velo">
+        <h3>Le bijou de l'année</h3>
+        <div class="image_le_nouveau_velo">
+            {% for la_nouveaute_nom in la_nouveaute_nom %}
+                <h4>{{ la_nouveaute_nom.nom_velo }}</h4>
+            {% endfor %}
+            <a href="le_nouveau_velo.php">Découvrire le vélo de l'année</a>
+        </div>
+        <!--image-fond-->
+        <style>
+            .image_le_nouveau_velo {
+                background-image: url({{ la_nouveaute[0].photo_1 }});
+            }
+        </style>
+    </section>
+    <!--Tout les nouveaux vélos-->
+    <section class="accueil_nouveaux_velos wrapper-2">
+        <h3>Tous les nouveaux vélos</h3>
+        <div class="placement_article_velos">
+            {% for nouveau in nouveau_velo %}
+                <article class="article_velo">
+                    <div class="image_article">
+                        <a href="affiche_details_velos.php?id={{ nouveau.id_velo }}">
+                            <img src="{{ nouveau.img_couleur_1 }}" alt="image du velo {{ nouveau.nom_velo }}">
+                        </a>
+                    </div>
+                    <div class="texte_article">
+                        <h4>{{ nouveau.nom_velo }}</h4>
+                        <p class="prix">
+                            <span class="bold">{{ nouveau.prix }} €</span>
+                            {% if nouveau.prix_de_base %} 
+                            <span class="couleur_gris"><span class="texte_barrer">{{ nouveau.prix_de_base }} €</span> économisez {{ nouveau.prix_de_base - nouveau.prix }} €</span>
+                            {% endif %}
+                        </p>
+                        <p class="texte_surligner par_mois">ou {{ nouveau.prix_par_mois }} € par mois</p>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

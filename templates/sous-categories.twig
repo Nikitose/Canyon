@@ -1,0 +1,51 @@
+{% extends 'base.twig' %}
+
+{% block nav_2 %}
+    <!--Affiche les sous catégories correspondantent à la catégorie-->
+	<div class="section_header_trois">
+		<nav class="nav_2">
+            <ul>
+                {% for sous_categories in affiche_sous_categories %}
+                    <li><a href="affiche_velos_vignettes.php?id={{ sous_categories.id_sous_categorie }}">{{ sous_categories.nom_sous_categorie }}</a></li>
+                {% endfor %}
+            </ul>
+		</nav>
+	</div>
+{% endblock %}
+
+{% block main %}
+    <!--img_categorie-->
+    {% for categorie in affiche_img_categories %}
+        <div class="img_categorie">
+            <h2>{{ categorie.nom_categorie }}
+                {% for item in affiche_nombre_velos_par_categorie %}
+                    {% if item.id_categorie == categorie.id_categorie %}
+                        ({{ item.nombre_velos }} vélos)
+                    {% endif %}
+                {% endfor %}
+            </h2>
+            <a href="#voir_sous_categorie">Voir les catégories</a>
+        </div>
+        <!--banniere représentative de la sous catégorie-->
+        <style>
+            .img_categorie {
+                background-image: url({{ categorie.img_categorie }});
+            }
+        </style>
+    {% endfor %}
+
+    <!--img_sous_categories-->
+    <div id="voir_sous_categorie" class="liste_sous_categories wrapper">
+        {% for sous_categories in affiche_sous_categories %}
+            <div class="une_sous_categories">
+                <a href="affiche_velos_vignettes.php?id={{ sous_categories.id_sous_categorie }}">
+                    <div class="box_texte_par_dessus">
+                        <img src="{{ sous_categories.img_sous_categorie }}" >
+                        <h3>{{ sous_categories.nom_sous_categorie }}</h3>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

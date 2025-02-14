@@ -1,0 +1,72 @@
+{% extends 'sous-categories.twig' %}
+
+{% block nav_2 %}
+
+{% endblock %}
+
+{% block main %}
+    <div class="content wrapper">
+        <!--GAUCHE-TEXTE-->
+        <div class="col-2">
+            <h2>Votre Panier</h2>
+            <!--pluriel-->
+            {% if affiche_nombre_velo_panier[0]['affiche_nombre_velo_panier'] > 1 %}
+                {% set lettre_s = "s" %}
+            {% else %}
+                {% set lettre_s = "" %}
+            {% endif %}
+            <!--nombre vélos dans le panier-->
+            <p href="panier.php">Vous avez <span class="bold">{{ affiche_nombre_velo_panier[0]['affiche_nombre_velo_panier'] }}</span> vélo{{ lettre_s }} dans votre panier</p>
+            {% set prix_total = 0 %}
+            {% for velo_panier in affiche_velo_panier %}
+                {% set prix_total = prix_total + velo_panier.prix %}
+            {% endfor %}
+            <!--prix total-->
+            <p>Prix total : <span class="bold">{{ prix_total }} €</span></p>
+            <!--acheter-->
+            <div class="flex-off">
+                <button class="tout-acheter">Tout acheter</button>
+            </div>
+        </div>
+        <!--DROITE-LISTE-VELOS-->
+        <div class="col-4">
+            {% for velo_panier in affiche_velo_panier %}
+                <article class="article_velo">
+                    <!--image-->
+                    <div class="image_article">
+                        <a href="affiche_details_velos.php?id={{ velo_panier.id_velo }}">
+                            <img src="{{ velo_panier.img_couleur_1 }}" alt="image du velo {{ velo_panier.nom_velo }}">
+                        </a>
+                    </div>
+                    <!--infos-textuelles-->
+                    <div class="texte_article">
+                        <div>
+                            <!--nom vélo-->
+                            <h3>{{ velo_panier.nom_velo }}</h3>
+                            <!--prix-->
+                            <p class="bold prix">{{ velo_panier.prix }} €</p>
+                            <!--reduction prix-->
+                            <p class="prix">
+                                {% if velo_panier.prix_de_base %} 
+                                    {% set economie = velo_panier.prix_de_base - velo_panier.prix %}
+                                    {% set pourcentage = (economie / velo_panier.prix_de_base * 100) | round %}
+                                    <span class="texte_couleur_gris"><span class="texte_barrer"> {{ velo_panier.prix_de_base }} €</span> économisez {{ economie }} €</span>
+                                {% endif %}
+                            </p>
+                            <!--prix par mois-->
+                            <p class="texte_surligner par_mois">ou {{ velo_panier.prix_par_mois }} € par mois</p>
+                        </div>
+                        <!--supprimer du panier-->
+                        <div>
+                            <form action="supprimer_du_panier.php" method="post" class="supprimer_du_panier centre">
+                                <input type="hidden" name="id_velo" value="{{ velo_panier.id_velo }}">
+                                <button type="submit">supprimer du panier</button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

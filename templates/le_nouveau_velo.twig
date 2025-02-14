@@ -1,0 +1,103 @@
+{% extends 'sous-categories.twig' %}
+
+{% block nav_2 %}
+
+{% endblock %}
+
+{% block main %}
+
+    <section>
+        {% for la_nouveaute in la_nouveaute %}
+            <!--banniere-->
+            <div class="banniere-la-nouveaute">
+                <div class="centre">
+                    <h2>Sender CFR 29 LTD</h2>
+                    <p>Le vélo de l'année</p>
+                </div>
+                <div class="centre">
+                    <a href="#toute-infos-sur-la-nouveaute"><i class="fa-solid fa-angle-down"></i></a>
+                </div>
+            </div>
+            <!--Image-banniere-->
+            <style>
+                .banniere-la-nouveaute {
+                    background-image: url({{ la_nouveaute.couleurs }});
+                }
+            </style>
+            <h3 id="toute-infos-sur-la-nouveaute" >Informations techniques</h3>
+            <div class="wrapper">
+                <!--infos sur les composants principaux-->
+                <article class="flex une-info">
+                    <div class="flex-1 centre">
+                        <h4>Suspension avant</h4>
+                        <p>Avec ces 200 mm de débatement à l'avant, il sera parfait pour amortire facun de vos sauts</p>
+                    </div>
+                    <div class="flex-1 centre">
+                        <img src="{{ la_nouveaute.suspension_avant }}"/>
+                    </div>
+                </article>
+                <article class="flex une-info">
+                    <div class="flex-1 centre">
+                        <img src="{{ la_nouveaute.suspension_arriere }}"/>
+                    </div>
+                    <div class="flex-1 centre">
+                        <h4>Résistance maximum</h4>
+                        <p>Inspirés par les remarques de nos mécaniciens du CLLCTV, nous avons conçu le Sender CFR pour qu'il soit aussi durable que possible. En plus des protections de cadre du vélo, le Sender dispose également d'inserts filetés remplaçables. Avec 200mm à l'arrière.</p>
+                    </div>
+                </article>
+                <article class="flex une-info">
+                    <div class="flex-1 centre">
+                        <h4>Les vitesses</h4>
+                        <p>Les protections du tube diagonal, des haubans et de la base arrière, ainsi que les traitements en mousse des orifices d'entrée des flexibles et des câbles, garantissent la tranquillité et la sécurité.</p>
+                    </div>
+                    <div class="flex-1 centre">
+                        <img src="{{ la_nouveaute.vitesse }}"/>
+                    </div>
+                </article>
+                <article class="flex une-info">
+                    <div class="flex-1 centre">
+                        <img src="{{ la_nouveaute.cadre }}"/>
+                    </div>
+                    <div class="flex-1 centre">
+                        <h4>Carbone, résistant et légé</h4>
+                        <p>Avec un poids de 3,15 kg, le cadre en carbone du Sender CFR trouve le juste milieu entre légèreté et résistance. Prêt pour les pistes de DH les plus difficiles au monde.</p>
+                    </div>
+                </article>
+                <!--boutton-vers-page-detail-du-nouveau-vélo-->
+                <div class="centre">
+                    <a class="boutton-detail-la-nouveaute" href="affiche_details_velos.php?id={{ la_nouveaute.id_velo }}">Acheter le Sender</a>
+                </div>
+                <!--infos-roues-->
+                <h4 class="centre h4-roues">Roulez avec une roue avant de 29" et une roue arrière de 27,5"</h4>
+                <img src="{{ la_nouveaute.roues }}"/>
+                <!--images-cources avec phrases motivantes-->
+                <article class="flex une-info">
+                    <div class="flex-1 centre">
+                        <p>Gardez le contrôle grâce à un centre de gravité bas et à une suspension arrière souple. L’empattement du Sender dévore les sentiers escarpés et techniques. Sa géométrie ajustable vous permet de trouver la configuration parfaite à chaque fois.
+                        </p>
+                    </div>
+                    <div class="flex-1 centre">
+                        <img src="{{ la_nouveaute.photo_2 }}"/>
+                    </div>
+                </article>
+                <article class="flex une-info">
+                    <div class="flex-1 centre">
+                        <img src="{{ la_nouveaute.photo_3 }}"/>
+                    </div>
+                    <div class="flex-1 centre">
+                        <p>Un retour de pédale excessif vous ralentit et vous épuise. Grâce à un positionnement intelligent du pivot principal, le Sender CFR réduit les kickback. </p>
+                    </div>
+                </article>
+                <article class="flex une-info">
+                    <div class="flex-1 centre">
+                        <p>Optez pour le Sender CFR LTD pour la conception ultime, le Sender CFR pour un pilotage axé sur la performance, et le Sender CFR Underdog pour des sensations exceptionnelles avec un rapport qualité-prix maximal.</p>
+                    </div>
+                    <div class="flex-1 centre">
+                        <img src="{{ la_nouveaute.photo_4 }}"/>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}

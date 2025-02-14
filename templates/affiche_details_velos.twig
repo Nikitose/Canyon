@@ -1,0 +1,161 @@
+{% extends 'sous-categories.twig' %}
+
+{% block nav_1_1 %}
+    <!--retour_sous_categorie-->
+    <nav class="box_retour_sous_categorie">
+        <a class="texte_retour_sous_categorie texte_surligner" href="affiche_velos_vignettes.php?id={{ affiche_detail_velo.id_sous_categorie }}"><i class="fa-solid fa-angles-left"></i>Retour à {{ affiche_detail_velo.nom_sous_categorie }}</a>
+    </nav>
+{% endblock %}
+
+{% block nav_2 %}
+
+{% endblock %}
+
+{% block main %}
+    <!--UN ARTICLE-->
+    <article class="detail_velo content">
+        <!--img-fixe-(GAUCHE)-->
+        <div class="image_detail_velo col-4">
+            <img id="velo_image" src="{{ affiche_detail_velo.img_couleur_1 }}" alt="image du velo {{ affiche_detail_velo.nom_velo }}">
+        </div>
+        <!--toutes-information-sur-velo-(DROITE)-->
+        <div class="texte_detail_velo col-2">
+            <!--nom vélo-->
+            <h3>{{ affiche_detail_velo.nom_velo }}</h3>
+            <!--nouveau oui/non-->
+            {% if affiche_detail_velo.nouveau == 'oui' %}
+                <div class="info_nouveau_detail"><p>nouveau</p></div>
+            {% endif %}
+            <!--prix-->
+            <p class="tout_les_prix">
+                <span class="prix">{{ affiche_detail_velo.prix }} €</span>
+                {% if affiche_detail_velo.prix_de_base %} 
+                    <span class="texte_couleur_gris"><span class="texte_barrer">{{ affiche_detail_velo.prix_de_base }} €</span> économisez {{ affiche_detail_velo.prix_de_base - affiche_detail_velo.prix }} €</span>
+                {% endif %}
+            </p>
+            <p class="prix_par_mois texte_surligner">ou {{ affiche_detail_velo.prix_par_mois }} € par mois</p>
+            <!--Preparation-Variables-Avis-->
+            {% set nombre_de_notes = affiche_commentaire|length %}
+            <!--Avis-affichage-->
+            <div class="avis">
+                <a class="nombre_avis texte_surligner" href="#commentaires">Avis({{ nombre_de_notes }}) </a>
+                <div class="box-note">
+                    <div class="nombre_etoiles">
+                        {% for i in 1..5 %}
+                            {% set full_star = (i <= affiche_moyenne_note ) %}
+                            {% set half_star = (i > affiche_moyenne_note and i - 0.5 <= affiche_moyenne_note) %}
+                            <span class="etoile {% if full_star %}full{% elseif half_star %}half{% endif %}">&#9733;</span>
+                        {% endfor %}
+                        <!--moyenne_note_arondie-->
+                        {% set moyenne_note_un_apres_virgule = affiche_moyenne_note | round(1) %}
+                        <p class="affiche_moyenne_note">{{ moyenne_note_un_apres_virgule }}</p>
+                    </div>
+                </div>
+            </div>
+            <!--Description-vélo-->
+            <p class="description">{{ affiche_detail_velo.description }}</p>
+            <!--infos-techniques-vélo-->
+            <div class="infos-techniques">
+                <p>Tailles disponobles : <span class="bold">{{ affiche_detail_velo.taille }}</span></p>
+                <p>Poids : <span class="bold">{{ affiche_detail_velo.poids }} kg</span></p>
+                <p>Matériau : <span class="bold">{{ affiche_detail_velo.Matériau }}</span></p>
+                {% if affiche_detail_velo.debatement %} 
+                    <p>Débatement : <span class="bold">{{ affiche_detail_velo.debatement }} mm</span></p>
+                {% endif %}
+                {% if affiche_detail_velo.type_debatement != "non" %} 
+                    <p>Type débatement : <span class="bold">{{ affiche_detail_velo.type_debatement }}</span></p>
+                {% endif %}
+            </div>
+            <!--Couleurs du vélo-->
+            {% if affiche_detail_velo.img_couleur_2 %} 
+            <h4 class="Couleurs_velo_titre">Couleurs disponibles</h4>
+            <div class="couleurs flex">
+                <button id="change_image_boutton_1" class="couleurs_boutton">
+                    <img src="{{ affiche_detail_velo.texte_couleur_2 }}" alt="couleur 1">
+                </button>
+                <button id="change_image_boutton_2" class="couleurs_boutton">
+                    <img src="{{ affiche_detail_velo.texte_couleur_1 }}" alt="couleur 2">
+                </button>
+            </div>
+            {% endif %}
+            <!--Ajouter-au-Panier-->
+            <form method="post" action="ajouter_au_panier.php" href="panier.php" class="ajouter_au_panier">
+                <input type="hidden" name="id_velo" value="{{ affiche_detail_velo.id_velo }}">
+                <button type="submit" class="btn_ajouter_au_panier">Ajouter au panier</button>
+            </form>
+            <!--Envoie commentaire + note-->
+            <h4 class="Envoie_commentaire_note_titre">Laisser un commentaire</h4>
+            <form method="post" action="reception.php" class="poster_commentaire" href="#">
+                <input type="hidden" name="id_velo" value="{{ affiche_detail_velo.id_velo }}">
+                <input type="text" name="text" placeholder="Votre commentaire">
+                <input type="number" name="note" min="0" max="5" aria-required="true" placeholder="Votre note (sur 5)">
+                <input type="submit" value="Poster le commentaire">
+            </form>
+            <!--Affiche commentaires + notes-->
+            <h4 class="Affiche_commentaire_note_titre">Les commentaires</h4>
+            <div class="box-commentaires" id="commentaires">
+                {% if affiche_commentaire is empty %}
+                    <p class="Pas_de_commentaires">Pas de commentaires</p>
+                {% else %}
+                    {% for affiche_commentaire in affiche_commentaire %}
+                        <div class="un_commentaire">
+                            <form action="modifier_commentaire.php" method="post">
+                                <input type="hidden" name="id_commentaire" value="{{ affiche_commentaire.id_commentaire }}">
+                                <div class="box-note">
+                                    <div class="nombre_etoiles">
+                                        <!--etoiles-->
+                                        {% set note_commentaire = affiche_commentaire.note %}
+                                        {% for i in 1..5 %}
+                                            {% set full_star = (i <= note_commentaire) %}
+                                            {% set half_star = (i > note_commentaire and i - 0.5 <= note_commentaire) %}
+                                            <span class="etoile {% if full_star %}full{% elseif half_star %}half{% endif %}">&#9733;</span>
+                                        {% endfor %}
+                                        <!--note_commentaire_arondie-->
+                                        {% set note_commentaire_un_apres_virgule = note_commentaire|round(1) %}
+                                        <input class="affiche_note_commentaire" type="number" name="note" value="{{ note_commentaire_un_apres_virgule }}" min="0" max="5" readonly>
+                                    </div>
+                                </div>
+                                <!--texte-commentaire-->
+                                <textarea class="affiche_texte_commentaire" type="text" name="text" readonly>{{ affiche_commentaire.texte }}</textarea>
+                                <div class="Modifier-Supprimer">
+                                    <a class="texte_surligner modifier" href="#">Modifier</a>
+                                    <a class="texte_surligner supprimer" href="supprimer_commentaire.php?id={{ affiche_commentaire.id_commentaire }}">Supprimer</a>
+                                    <button class="re-envoyer" type="submit" class="btn-re-envoyer" style="display:none;">Re-Envoyer</button>
+                                </div>
+                            </form>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+    </article>
+
+<script>
+
+//CHANGER VELO COULEUR
+document.addEventListener('DOMContentLoaded', function() {
+    // Changer couleur vers couleur_1
+    document.getElementById('change_image_boutton_1').addEventListener('click', function() {
+        var imgElement = document.getElementById('velo_image');
+        console.log('Changement vers couleur 1: ' + imgElement.src);
+        imgElement.src = "{{ affiche_detail_velo.img_couleur_1|e('js') }}";
+        document.getElementById('change_image_boutton_1').classList.add('couleur_active');
+        document.getElementById('change_image_boutton_2').classList.remove('couleur_active');
+    });
+
+    // Changer couleur vers couleur_2
+    document.getElementById('change_image_boutton_2').addEventListener('click', function() {
+        var imgElement = document.getElementById('velo_image');
+        console.log('Changement vers couleur 2: ' + imgElement.src);
+        imgElement.src = "{{ affiche_detail_velo.img_couleur_2|e('js') }}";
+        document.getElementById('change_image_boutton_2').classList.add('couleur_active');
+        document.getElementById('change_image_boutton_1').classList.remove('couleur_active');
+    });
+});
+
+</script>
+
+{% endblock %}
+
+
+
+

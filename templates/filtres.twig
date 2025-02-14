@@ -1,0 +1,107 @@
+{% extends 'sous-categories.twig' %}
+
+{% block nav_2 %}
+{% endblock %}
+
+{% block main %}
+
+    <div class="content wrapper-4">
+        <section class="col-2">
+            <h2>Filtrer les vélos</h2>
+            <form class="liste_filtres" method="GET" action="filtres.php">
+                <!--catégories-->
+                <label for="id_sous_categorie">Sous-catégorie:</label>
+                <select id="id_sous_categorie" name="id_sous_categorie">
+                    <option value="">Toutes</option>
+                    {% for sous_categories in affiche_sous_categories_all %}
+                        <option value="{{ sous_categories.id_sous_categorie }}" {% if sous_categories.id_sous_categorie == id_sous_categorie %}selected{% endif %}>
+                            {{ sous_categories.nom_sous_categorie }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <!--Prix max-->
+                <label>
+                    Prix moins de : 
+                    <input type="number" name="prix_max" value="{{ prix_max }}" min="0"> €
+                </label>
+                <!--cPrix par mois max-->
+                <label>
+                    Prix par mois, moins de :
+                    <input type="number" name="prix_mois_max" value="{{ prix_mois_max }}" min="0"> €
+                </label>
+                <!--Poids max-->
+                <label>
+                    Poids moins de : 
+                    <input type="number" name="poids_max" value="{{ poids_max }}" min="0"> kg
+                </label>
+                <!--promotion oui/non-->
+                <label>
+                    <input type="checkbox" name="filtre[]" value="promotion" {% if 'promotion' in filtre %}checked{% endif %}>
+                    promotion
+                </label>
+                <!--nouveau oui/non-->
+                <label>
+                    <input type="checkbox" name="filtre[]" value="nouveau" {% if 'nouveau' in filtre %}checked{% endif %}>
+                    nouveau
+                </label>
+                <!--Vélos Électriques oui/non-->
+                <label>
+                    <input type="checkbox" name="filtre[]" value="electriques" {% if 'electriques' in filtre %}checked{% endif %}>
+                    Vélos Électriques
+                </label>
+                <!--Vélos Classiques oui/non-->
+                <label>
+                    <input type="checkbox" name="filtre[]" value="classiques" {% if 'classiques' in filtre %}checked{% endif %}>
+                    Vélos Classiques
+                </label>
+                <button class="button-trie" type="submit">Appliquer les filtres</button>
+            </form>
+        </section>
+
+        <!--BOX articles-->
+        <section class="col-4">
+            <h2>Vélos sélectionnés :</h2>
+            {% for affiche_velo in velos %}
+                    <!--UN articles-->
+                    <article class="article_velo">
+                        <!--BOX img-->
+                        <div class="image_article">
+                            <!--img-->
+                            <a href="affiche_details_velos.php?id={{ affiche_velo.id_velo }}">
+                                <img src="{{ affiche_velo.img_couleur_1 }}" alt="image du velo {{ affiche_velo.nom_velo }}">
+                            </a>
+                        </div>
+                        <!--BOX texte-->
+                        <div class="texte_article">
+                            <!--nom vélo-->
+                            <h4>{{ affiche_velo.nom_velo }}</h4>
+                            <!--NEW oui/non-->
+                            {% if affiche_velo.nouveau == 'oui' %}
+                                <p class="info_velo_nouveau">nouveau</p>
+                            {% endif %}
+                            <!--PROMO oui/non-->
+                            {% if affiche_velo.prix_de_base %} 
+                                {% set economie = affiche_velo.prix_de_base - affiche_velo.prix %}
+                                {% set pourcentage = (economie / affiche_velo.prix_de_base * 100) | round %}
+                                <p class="article_velo_pourcentage">-{{ pourcentage }}%</p>
+                            {% endif %}
+                            <!--prix-->
+                            <p class="prix">
+                                <span class="bold">{{ affiche_velo.prix }} €</span>
+                                {% if affiche_velo.prix_de_base %} 
+                                    {% set economie = affiche_velo.prix_de_base - affiche_velo.prix %}
+                                    {% set pourcentage = (economie / affiche_velo.prix_de_base * 100) | round %}
+                                    <span class="texte_couleur_gris"><span class="texte_barrer"> {{ affiche_velo.prix_de_base }} €</span> économisez {{ economie }} €</span>
+                                {% endif %}
+                            </p>
+                            <!--par mois-->
+                            <p class="texte_surligner par_mois">ou {{ affiche_velo.prix_par_mois }} € par mois</p>
+                            <p class="poids bold">{{ affiche_velo.poids }} kg</p>
+                        </div>
+                    </article>
+            {% endfor %}
+        </section>
+    </div>
+
+
+{% endblock %}
