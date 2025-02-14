@@ -1,0 +1,439 @@
+/***********************HEADER***********************/
+
+.section_header_un {
+	background-color: #ffffff;
+}
+
+/***section_header_deux***/
+header .section_header_deux {
+	background-color: #ffffff;
+}
+
+/***section_header_deux-2***/
+.section_header_deux-2 {
+    background-color: rgb(242, 242, 242);
+}
+
+/***section_header_trois***/
+header .section_header_trois {
+	background-color: #ffffff;
+}
+
+/***box_retour_sous_categorie***/
+header .box_retour_sous_categorie {
+	background-color: #ffffff;
+}
+
+/***retour_sous_categorie***/
+.box_retour_sous_categorie {
+    border-bottom: 1px solid #33333363;
+	background-color: rgb(242, 242, 242);
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box_retour_sous_categorie i {
+    margin-right: 7px;
+}
+
+.texte_retour_sous_categorie {
+    color: #000000;
+    font-size: 13px;
+}
+
+/***********************MAIN***********************/
+/*****AFFICHE DETAILS VELOS*****/
+
+main {
+    width: 100%;
+}
+
+/***BOX-IMG***/
+.image_detail_velo {
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 95px);
+}
+/*IMG*/
+.image_detail_velo img {
+    max-width: 80%;
+}
+
+/***BOX-TEXTE***/
+.texte_detail_velo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    height: calc(100vh - 95px);
+    overflow: auto;
+    /*scrollbar-width: none;*/
+}
+
+/*nom-velo*/
+.texte_detail_velo h3 {
+    font-size: 32px;
+    margin: 30px 0 0 0;
+}
+
+/*nouveau*/
+.info_nouveau_detail {
+    width: 100px;
+    height: 27px;
+    border-radius: 5px;
+    z-index: 2;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    margin: 5px 0 0 0;
+}
+
+/*BOX-TOUT-PRIX*/
+.texte_detail_velo .tout_les_prix {
+    margin: 30px 0 0 0;
+}
+
+/*prix*/
+.texte_detail_velo .prix {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/*prix par mois*/
+.texte_detail_velo .prix_par_mois {
+    margin: 0;
+    font-size: 16px;
+}
+
+/***AVIS***/
+.texte_detail_velo .avis {
+    display: flex;
+    align-items: center;
+    margin: 40px 0 0 0;
+}
+
+/*nombre d'avis*/
+.texte_detail_velo .nombre_avis {
+    color: #000000;
+    font-size: 18px;
+}
+
+/*LES-ETOILES*/
+.texte_detail_velo .box-note {
+    width: 125px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin: -5px 0 0 0px;
+}
+
+.nombre_etoiles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.etoile {
+    font-size: 30px;
+    color: #ccc; 
+    position: relative;
+}
+
+.etoile.full {
+    color: #000000; 
+}
+
+.etoile.half::before {
+    content: '★';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    color: #000000; 
+}
+
+/*note moyenne*/
+.affiche_moyenne_note {
+    margin: 6px 0 0 4px;
+}
+
+/*description*/
+.description {
+    background-color: #f2f2f2;
+    padding: 20px 25px; 
+    margin: 30px 0 0 0;
+    border-radius: 20px;
+    width: 80%;
+    text-align: justify;
+}
+
+/*BOX-infos-techniques*/
+.infos-techniques {
+    margin: 20px 0 0 0;
+    width: 90%;
+    font-size: 13px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid #d5d5d5;
+}
+
+/***couleurs velo***/ 
+.Couleurs_velo_titre {
+    margin: 30px 0 10px 0;
+}
+
+.couleurs_boutton {
+    height: 35px;
+    width: 100px;
+    background-color: white;
+    margin: 0 15px 0 0;
+    border: 2px rgb(133, 133, 133) solid;
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.couleurs_boutton:last-child {
+    margin: 0;
+}
+.couleurs_boutton:hover {
+    cursor: pointer;
+    border: 2px #0e0e0e solid;
+}
+.couleur_active {
+    border: 2px #0e0e0e solid;
+}
+
+/***ajouter_au_panier***/
+.Envoie_commentaire_note_titre {
+    margin: 40px 0 10px 0;
+}
+
+.ajouter_au_panier {
+    margin: 30px 0 30px 0;
+    padding-bottom: 30px;
+    width: 90%;
+    border-bottom: 2px solid #d5d5d5;
+}
+
+/*boutton*/
+.btn_ajouter_au_panier {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 5px 30px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px #0e0e0e solid;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.2s ease-in-out;
+    z-index: 0;
+}
+
+/*effet*/
+.btn_ajouter_au_panier::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(44, 44, 44);
+    transition: left 0.2s ease-in-out;
+    z-index: -1;
+}
+
+.btn_ajouter_au_panier:hover::before {
+    left: 0;
+}
+
+.btn_ajouter_au_panier:hover {
+    color: white;
+}
+
+.btn_ajouter_au_panier span {
+    position: relative;
+    z-index: 1;
+}
+
+/***Commentaires***/
+
+/*box-commentaire*/
+.Affiche_commentaire_note_titre {
+    margin: 70px 0 10px 0;
+}
+
+.Pas_de_commentaires {
+    font-size: 12px;
+    margin-bottom: 50px;
+}
+
+.poster_commentaire {
+    background: white;
+    padding: 20px;
+    margin: 0 0 0 4px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+}
+
+/*zone saisie*/
+.poster_commentaire input[type="text"],
+.poster_commentaire input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 0 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/***envoyer***/
+.poster_commentaire input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+    background: rgb(44, 44, 44);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.poster_commentaire input[type="submit"]:hover {
+    background: #000000;
+    transition: all 0.2s;
+}
+
+/***LISTE_tout_les_commentaires***/
+.box-commentaires {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+/*un_commentaire*/
+.un_commentaire {
+    background: white;
+    padding: 20px;
+    margin: 0 0 15px 4px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+}
+
+/*affiche_note_commentaire*/
+.affiche_note_commentaire {
+    margin: 7px 0 0 5px;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+}
+
+/*affiche_texte_commentaire*/
+.affiche_texte_commentaire {
+    margin: 5px 0 0 0px;
+    border: none;
+    font-size: 17px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    min-height: 3.8em; 
+    resize: none;
+    overflow: auto;
+}
+
+.affiche_note_commentaire:focus, .affiche_texte_commentaire:focus  {                
+    outline: none;/***NOUVEAU***/
+}
+
+/*afficher border et outline quand --> click sur modifier*/
+.editable {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.editable:focus {
+    outline: none;
+}
+
+/*Modifier-Supprimer*/
+.Modifier-Supprimer {
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*a*/
+.Modifier-Supprimer a {
+    color: black;
+    font-size: 13px;
+    margin: 0 7px 0 0;
+}
+.Modifier-Supprimer a:hover {
+    color: rgb(102, 102, 102);
+}
+
+/*re-envoyer*/
+.re-envoyer {
+    margin: 0 0 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px 5px;
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+.re-envoyer:hover {
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+
+/***********************MEDIA-ACCUEIL***********************/
+
+/*****media-960px*****/
+@media (max-width: 960px) {
+
+    /*taille-img*/
+    .image_detail_velo img {
+        max-width: 87%;
+    }
+    
+    /*box-description*/
+    .description {
+        width: 77%;
+        font-size: 15px;
+    }
+
+}  
+
+/*****media-600px*****/
+@media (max-width: 600px) {
+
+    /*taille-img*/
+    .image_detail_velo img {
+        max-width: 70%;
+    }
+
+    /*taille box-img*/
+    .image_detail_velo {
+        height: 36vh;
+    }
+
+    /*enlever-la-scroll-barre*/
+    /*
+    .texte_detail_velo {
+        scrollbar-width: none;
+    }
+    */
+}  

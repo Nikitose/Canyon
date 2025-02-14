@@ -1,0 +1,238 @@
+/***********************MAIN***********************/
+
+img {
+    width: 100%;
+}
+
+/***BANNIERE***/
+.banniere-la-nouveaute {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: calc( 100vh - 95px );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*h2*/
+.banniere-la-nouveaute h2 {
+    margin: 7% 0 0 0;
+    font-size: 60px;
+    color: white;
+}
+
+/*p*/
+.banniere-la-nouveaute p {
+    margin: 0 0 0 0;
+    font-size: 30px;
+}
+
+/*a*/
+.banniere-la-nouveaute a {
+    margin: 0 0 30px 0;
+    font-size: 30px;
+    color: rgb(197, 197, 197);
+    background-color: rgb(32, 32, 32);
+    padding: 0px 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.2s;
+}
+
+.banniere-la-nouveaute a:hover {
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border: 1px solid rgb(255, 255, 255);
+    transition: all 0.2s;
+}
+
+/***INFOS-SUR-VELO***/
+
+/*titre-info-techniques*/
+#toute-infos-sur-la-nouveaute {
+    margin: 100px 0 0 0 ;
+    text-align: center;
+    font-size: 30px;
+}
+
+/*box-info*/
+.une-info {
+    margin-top: 30px;
+}
+
+/*img*/
+img {
+    border-radius: 10px;
+}
+
+/*centre-texte*/
+.une-info .centre {
+    margin: 0 35px;
+}
+
+/*h*/
+.une-info h4 {
+    font-size: 24px;
+}
+
+/*p*/
+.une-info p {
+    font-size: 18px;
+    text-align: justify;
+}
+
+/*h4 roues*/
+.h4-roues {
+    font-size: 22px;
+    margin: 0 0 10px 0;
+}
+
+/*boutton-vers-detail-la-nouveaute*/
+.boutton-detail-la-nouveaute {
+    padding: 12px 120px;
+    margin: 100px 0 80px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background-color: rgb(53, 53, 53);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.2s ease;
+}
+
+.boutton-detail-la-nouveaute::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 200px;
+    background-color: rgb(236, 236, 236);
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: -1;
+    transition: all 0.15s ease;
+}
+
+.boutton-detail-la-nouveaute:hover::before {
+    width: 0;
+    height: 0;
+}
+
+.boutton-detail-la-nouveaute:hover {
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.1);
+    box-shadow: 0 0 80px rgb(173, 134, 218);
+}
+
+
+/***********************MEDIA-ACCUEIL***********************/
+
+/*****media-960px*****/
+@media (max-width: 960px) {
+
+    /*main-margin-top*/
+    main {
+        margin-top: 60px;
+    }
+
+    /*wrapper*/
+    .wrapper {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /*banniere*/
+    .banniere-la-nouveaute {
+        height: 350px;
+    }
+
+    /*banniere h2*/
+    .banniere-la-nouveaute h2 {
+        font-size: 40px;
+        margin: 15px 0 0 0;
+    }
+
+    /*banniere p*/
+    .banniere-la-nouveaute p {
+        color: white;
+    }
+
+    /*une-box-info*/
+    .une-info .centre {
+        margin: 0 20px;
+    }
+
+    /*une-box-info h4*/
+    .une-info h4 {
+        font-size: 28px;
+    }
+    
+    /*une-box-info p*/
+    .une-info p {
+        font-size: 20px;
+        text-align: justify;
+    }
+    
+    /*box-info h4 roues*/
+    .h4-roues {
+        font-size: 20px;
+        text-align: center;
+        margin: 60px 0 10px 0;
+    }
+
+}  
+
+/*****media-600px*****/
+@media (max-width: 600px) {
+
+    /*banniere h2*/
+    .banniere-la-nouveaute h2 {
+        font-size: 40px;
+        margin: 15px 0 0 0;
+    }
+
+    /*banniere p*/
+    .banniere-la-nouveaute p {
+        color: white;
+    }
+
+    /*titre-info-techniques*/
+    #toute-infos-sur-la-nouveaute {
+        margin: 100px 0 60px 0;
+    }
+
+    /*box-colone*/
+    .une-info {
+        flex-direction: column;
+    }
+
+    /*une-box-info*/
+    .une-info .centre {
+        margin: 0 10px;
+    }
+
+    /*une-box-info h4*/
+    .une-info h4 {
+        font-size: 28px;
+        margin-top: 40px;
+    }
+
+    /*une-box-info p*/
+    .une-info p {
+        font-size: 24px;
+        text-align: justify;
+    }
+
+    /*box-info h4 roues*/
+    .h4-roues {
+        font-size: 20px;
+        text-align: center;
+        margin: 60px 0 10px 0;
+    }
+
+}

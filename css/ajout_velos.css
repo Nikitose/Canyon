@@ -1,0 +1,93 @@
+/***********************MAIN***********************/
+main {
+    margin-top: 170px;
+}
+
+
+/*h2**/
+h2 {
+    text-align: center;
+    margin: 0 0 30px 0;
+    font-size: 30px;
+}
+
+/*****FROM*****/
+.from_ajout_velo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*label*/
+label {
+    margin: 25px 0 3px 0;
+}
+
+/*input*/
+input {
+    width: 400px;
+    padding: 4px 5px;
+}
+
+/*select*/
+select {
+    width: 150px;
+    padding: 6px 5px;
+}
+
+/*textarea*/
+textarea {
+    width: 400px;
+    height: 200px;
+}
+
+.envoye-velo {
+    margin: 20px 0 0 0;
+    background-color: rgb(38, 38, 38);
+    font-size: 16px;
+    color: rgb(205, 205, 205);
+    padding: 8px 60px;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.envoye-velo:hover {
+    color: rgb(255, 255, 255);
+    background-color: black;
+    transition: all 0.2s;
+}
+
+/***********************MEDIA-ACCUEIL***********************/
+
+/*****media-960px*****/
+@media (max-width: 960px) {
+
+    /*main-margin-top*/
+    main {
+        margin-top: 120px;
+    }
+
+    /*h2**/
+    h2 {
+        margin: 0 0 20px 0;
+        font-size: 28px;
+    }
+
+}  
+
+/*****media-600px*****/
+@media (max-width: 600px) {
+
+    /*h2**/
+    h2 {
+        margin: 0 0 10px 0;
+        font-size: 24px;
+    }
+    
+    /*input  textarea*/
+    input {
+        width: 250px;
+    }
+
+}  

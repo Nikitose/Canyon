@@ -1,0 +1,259 @@
+/***********************HEADER***********************/
+
+.section_header_un {
+	background-color: rgb(242, 242, 242);
+}
+
+/***section_header_deux***/
+header .section_header_deux {
+	background-color: rgb(242, 242, 242);
+}
+
+/***section_header_deux-2***/
+.section_header_deux-2 {
+    background-color: rgb(242, 242, 242);
+}
+
+
+/***section_header_deux-2***/
+.section_header_deux-2 {
+    background-color: rgb(242, 242, 242);
+}
+
+/***section_header_trois***/
+header .section_header_trois {
+	background-color: rgb(242, 242, 242);
+}
+
+/***********************MAIN***********************/
+
+main {
+    margin-top: 95px;
+}
+
+/*col*/
+
+.col-2 {
+    margin: 0 30px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.col-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    height: calc(100vh - 95px);
+}
+
+/***Titre***/
+h2 {
+    text-align: start;
+    font-size: 38px;
+    margin: 50px 0 20px 0;
+}
+
+/*****affiche_filtres*****/
+
+.liste_filtres {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+/*label*/
+label {
+    margin: 0 0 15px 0;
+}
+label:first-child {
+    margin: 0 0 5px 0;
+}
+
+/*select*/
+select {
+    padding: 2px 7px;
+    margin: 0 0 30px 0;
+}
+
+/*input*/
+input[type=number] {
+    width: 100px;
+}
+
+.button-trie {
+    margin: 0 0 30px 0;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 7px 25px;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+.button-trie:hover {
+    color: rgb(255, 255, 255);
+    background-color: black;
+    transition: all 0.2s;
+}
+
+
+/*****affiche_velos*****/
+
+.article_velo {
+    flex: 0 0 auto;
+    background-color: #ffffffce;
+    border: 1px solid rgba(0, 0, 0, 0.212);
+    border-radius: 15px;
+    margin: 0 0 20px 0;
+    display: flex;
+    overflow: hidden;
+}
+
+.article_velo:hover {
+    border: 1px solid rgb(0, 0, 0);
+    -webkit-box-shadow: 1px 3px 28px -4px #979797; 
+    box-shadow: 1px 3px 28px -4px #979797;
+}
+
+/***IMG***/
+.image_article {
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_article img {
+    max-width: 250px;
+    margin: 20px;
+    transition: all 0.2s;
+}
+
+.image_article img:hover {
+    transform: scale(0.97);
+}
+
+/*nouveau*/
+.info_velo_nouveau {
+    height: 23px;
+    font-size: 13px;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 0 0;
+}
+
+/*réduction*/
+.article_velo_pourcentage {
+    height: 23px;
+    font-size: 13px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 1px solid #979797;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0 0 0;
+}
+
+/*absolute*/
+.absolute {
+    position: absolute;
+    margin: 10px 0 0 10px;
+}
+
+/***TEXTE***/
+.texte_article {
+    margin: 20px 25px;
+    width: 300px;
+}
+
+/***box-titre-plus-note***/
+.box-titre-plus-note {
+    display: flex;
+    flex-direction: column;
+}
+
+/*h4*/
+.texte_article h4 {
+    text-align: start;
+    font-size: 24px;
+    margin: 0;
+}
+
+/*p*/
+.prix {
+    margin: 15px 0 0 0;
+}
+
+.par_mois {
+    margin: 0;
+}
+
+.poids {
+    margin: 20px 0 0 0;
+    font-size: 14px;
+}
+
+/***********************MEDIA-ACCUEIL***********************/
+
+/*****media-1400px*****/
+@media (max-width: 1400px) {
+
+    .col-2, .col-4 {
+        flex-basis: 100%;
+    }
+
+    .col-2 {
+        align-items: center;
+        margin: 0;
+    }
+
+    .liste_filtres {
+        align-items: center;
+    }
+
+    .col-4 {
+        overflow-y: hidden;
+        height: 100%;
+    }
+} 
+
+
+/*****media-960px*****/
+@media (max-width: 960px) {
+
+    .image_article img {
+        max-width: 170px;
+    }
+
+    .texte_article {
+        margin: 20px 25px;
+        width: 300px;
+    }
+
+}  
+
+/*****media-600px*****/
+@media (max-width: 600px) {
+
+    h2 {
+        font-size: 40px;
+    }
+
+    .article_velo {
+        width: 450px;
+        flex-direction: column;
+    }
+
+    .image_article img {
+        max-width: 370px;
+    }
+
+}  

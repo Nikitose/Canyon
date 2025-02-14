@@ -1,0 +1,265 @@
+/***********************OF-ALL***********************/
+h3 {
+    font-size: 36px;
+    margin: 0 0 10px 0;
+}
+
+/*****BANNIERE*****/
+main .banniere {
+    background-image: url(../images/Accueil/banniere.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 60vh;
+    margin: 0 0 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+/*р2*/
+main .banniere h2 {
+    margin: 0 0 20px 0;
+    font-size: 65px;
+    color: white;
+}
+
+/*bouton*/
+main .banniere .box-boutton-vers-nouveaux-promotions {
+    margin: 0 0 10% 0;
+}
+
+main .banniere .box-boutton-vers-nouveaux-promotions a {
+    margin: 0 20px 0 0;
+    font-size: 16px;
+    color: rgb(228, 228, 228);
+    background-color: rgb(24, 24, 24);
+    padding: 8px 60px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    transition: all 0.2s;
+
+}
+main .banniere a:last-child {
+    margin: 0;
+    padding: 8px 40px;
+}
+
+main .banniere a:hover {
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border: 1px solid rgb(255, 255, 255);
+    transition: all 0.2s;
+}
+
+/*****Le bijou de l'année*****/
+.accueil_le_nouveau_velo {
+    margin: 100px 0 0 0;
+}
+
+/*box-img*/
+.image_le_nouveau_velo {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    margin: 0 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*img*/
+.accueil_le_nouveau_velo img {
+    width: 100%;
+    height: auto;
+}
+
+/*h3*/
+.accueil_le_nouveau_velo h3 {
+    margin: 0 0 5px 20px;
+}
+
+/*h4*/
+.accueil_le_nouveau_velo h4 {
+    margin: 0 0 0 5%;
+    font-size: 40px;
+    color: white;
+}
+
+/*a*/
+.accueil_le_nouveau_velo a {
+    margin: 10px 0 0 5%;
+    font-size: 16px;
+    color: rgb(228, 228, 228);
+    background-color: rgb(24, 24, 24);
+    padding: 8px 50px;
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.2s;
+}
+
+/*hover*/
+.accueil_le_nouveau_velo a:hover {
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border: 1px solid rgba(255, 255, 255);
+    transition: all 0.2s;
+}
+
+/*****Tout les nouveaux vélos*****/
+.accueil_nouveaux_velos {
+    margin-top: 100px;
+}
+
+/*placement_article_velos*/
+.placement_article_velos {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /*NOUVEAU--> défilement horizontal*/
+    gap: 20px;
+}
+
+/*articles*/
+.article_velo {
+    flex: 0 0 auto; /*NOUVEAU--> pas reduire taille */
+    max-width: 330px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+/*Barre défilement horizontale */
+.placement_article_velos::-webkit-scrollbar {
+    height: 7px;
+}
+.placement_article_velos::-webkit-scrollbar-track {
+    background: #f2f2f2;
+}
+.placement_article_velos::-webkit-scrollbar-thumb {
+    background: rgb(73, 73, 73);
+    border-radius: 10px;
+    width: 50px;
+}
+.placement_article_velos::-webkit-scrollbar-thumb:hover {
+    background: #161616;
+}
+
+/*image*/
+.image_article {
+    background-color: #f2f2f2;
+    border-radius: 15px;
+}
+
+.image_article img {
+    max-width: 280px;
+    margin: 20px;
+    transition: all 0.2s;
+}
+
+.image_article img:hover {
+    transform: scale(0.96);
+}
+
+/*texte*/
+.texte_article {
+    margin: 15px;
+}
+
+.texte_article h4 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.texte_article .prix {
+    margin: 20px 0 3px 0;
+}
+
+.texte_article .par_mois {
+    margin: 0;
+}
+
+/***********************MEDIA-ACCUEIL***********************/
+
+/*****media-960px*****/
+@media (max-width: 960px) {
+
+    /*main-margin-top*/
+    main {
+        margin-top: 60px;
+    }
+
+    /*img-banniere*/
+    main .banniere {
+        height: 50vh;
+    }
+
+    /*h2*/
+    main .banniere h2 {
+        font-size: 36px;
+    }
+
+    /*h4*/
+    .accueil_le_nouveau_velo h4 {
+        font-size: 34px;
+    }
+
+    /*position-a*/
+    .box-boutton-vers-nouveaux-promotions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*a*/
+    main .banniere .box-boutton-vers-nouveaux-promotions a {
+        margin: 20px 0 0 0;
+        font-size: 13px;
+    }
+
+    /*nouveau_velo --> a*/
+    .accueil_le_nouveau_velo a {
+        font-size: 13px;
+        width: 60%;
+        padding: 8px 10px;
+    }
+
+    main .banniere a:last-child {
+        margin: 8px 0 0 0;
+    }
+}  
+
+/*****media-600px*****/
+@media (max-width: 600px) {
+
+    /*h2*/
+    main .banniere h2 {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    /*h3*/
+    h3 {
+        font-size: 26px;
+    }
+
+    /*image_le_nouveau_velo*/
+    .image_le_nouveau_velo {
+        height: 330px;
+    }
+
+    /*liste-nouveau-vélos*/
+
+    /*box-image*/
+    .article_velo {
+        width: 360px;
+    }
+
+    /*img*/
+    .image_article img {
+        max-width: 285px;
+    }
+
+}  
